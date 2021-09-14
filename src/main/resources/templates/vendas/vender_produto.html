@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:replace="header :: headerBlock">
+<title>Realizar venda</title>
+</head>
+<body>
+
+	<div th:replace="header :: navBar"></div>
+
+	<div class="container">
+		<table>
+			<tr>
+				<th>Nome do produto selecionado</th>
+
+
+			</tr>
+			<tr th:each="produto : ${produtoEscolhido}">
+				<td th:text="${produto.nome}"></td>
+
+
+			</tr>
+		</table>
+	</div>
+	<br>
+	<div class="container">
+		<label>Quantidade</label> <br> <input type="number">
+	</div>
+	<br>
+
+	<br>
+	<div class="container">
+
+		<label>Cliente</label> <select class="form-control"
+			th:field="${clientes}" name="cliente">
+			<option value="cliente"></option>
+			<option th:each="cliente: ${clientes}" th:value="${cliente.codigo}"
+				th:text="${cliente.nomeCompleto}"></option>
+		</select>
+	</div>
+	<br>
+
+	<form action="/registrarVenda" method="get">
+		<div class="container">
+			<a href="/registrarVenda" class="btn btn-primary "><button>Registrar
+				venda</button></a>
+		</div>
+	</form>
+</body>
+</html>
